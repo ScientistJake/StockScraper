@@ -26,7 +26,7 @@ for stock in `cat $1` ;
 	done &&
 	
 for f in *.temp; 
-	do cat final.res | 
+	do cat "$4.txt" | 
 	paste - $f >temp; 
 	cp temp "$4.txt"; 
 	done; 
