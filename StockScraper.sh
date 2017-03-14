@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ $# -ne 3 ]; then
-    echo $0: 'usage: StockScraper stocklist.txt start[month-day-year] end[month-day-year]'
+if [ $# -ne 4 ]; then
+    echo $0: 'usage: StockScraper stocklist.txt start[month-day-year] end[month-day-year] output_prefix'
     exit 1
 fi
 
@@ -24,5 +24,12 @@ for stock in `cat $1` ;
 	awk -F "," '{print $7}' |
 	sed "s/Adj Close/$stock/g" > "$stock.temp" ;
 	done &&
-paste *.temp >> out.txt &&
+	
+for f in *.temp; 
+	do cat final.res | 
+	paste - $f >temp; 
+	cp temp "$4.txt"; 
+	done; 
+	
+rm temp
 rm *.temp
