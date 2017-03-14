@@ -15,12 +15,12 @@ y2=`echo $3 | cut -d"-" -f3`
 
 read -r x<"$1"
 
-curl "http://chart.finance.yahoo.com/table.csv?s=$x&a=$m&b=$d&c=$y&d=$m2&e=$d2&f=$y2&g=d&ignore=.csv" |
+curl -s "http://chart.finance.yahoo.com/table.csv?s=$x&a=$m&b=$d&c=$y&d=$m2&e=$d2&f=$y2&g=d&ignore=.csv" |
 awk -F "," '{print $1}' > 1.temp
 
 for stock in `cat $1` ;
 	do
-	curl "http://chart.finance.yahoo.com/table.csv?s=$stock&a=$m&b=$d&c=$y&d=$m2&e=$d2&f=$y2&g=d&ignore=.csv" |
+	curl -s "http://chart.finance.yahoo.com/table.csv?s=$stock&a=$m&b=$d&c=$y&d=$m2&e=$d2&f=$y2&g=d&ignore=.csv" |
 	awk -F "," '{print $7}' |
 	sed "s/Adj Close/$stock/g" > "$stock.temp" ;
 	done &&
