@@ -16,15 +16,16 @@ y2=`echo $3 | cut -d"-" -f3`
 read -r x<"$1"
 
 curl -s "http://chart.finance.yahoo.com/table.csv?s=$x&a=$m&b=$d&c=$y&d=$m2&e=$d2&f=$y2&g=d&ignore=.csv" |
-awk -F "," '{print $1}' > "$4.txt"
+awk -F "," '{print $1}' > "$4.csv"
 
 for stock in `cat $1` ;
 	do
+	echo "Grabbing $stock..."
 	curl -s "http://chart.finance.yahoo.com/table.csv?s=$stock&a=$m&b=$d&c=$y&d=$m2&e=$d2&f=$y2&g=d&ignore=.csv" |
 	awk -F "," '{print $7}' |
 	sed "s/Adj Close/$stock/g" > "$stock.temp" ;
-	paste "$4.txt" "$stock.temp" >temp;
-	cp temp "$4.txt";
+	paste -d , "$4.csv" "$stock.temp" >temp;
+	cp temp "$4.csv";
 	done &&
 	
 rm temp
