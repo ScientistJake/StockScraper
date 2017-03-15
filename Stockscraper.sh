@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -ne 4 ]; then
-    echo $0: 'usage: StockScraper stocklist.txt start[month-day-year] end[month-day-year] output_prefix'
+    echo $0: 'usage: Stockscraper stocklist.txt start[month-day-year] end[month-day-year] output_prefix'
     exit 1
 fi
 
