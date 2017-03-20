@@ -3,7 +3,7 @@
 if [ $# -ne 4 ]; then
     echo $0: ;
     printf 'usage: Stockscraper stocklist start[month-day-year] end[month-day-year] output_prefix' ;
-    printf "\nYou can also designate NYSE or AMEX or NASDAQ in place of stocklist to pull all stocks from that market\n" ;
+    printf "\nYou can also designate NYSE or AMEX or NASDAQ in place of stocklist to pull all stocks from that exchange\n" ;
     exit 1
 fi
 
