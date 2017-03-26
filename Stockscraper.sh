@@ -3,7 +3,7 @@
 if [ $# -ne 4 ]; then
     echo $0: ;
     printf 'usage: Stockscraper stocklist start[month-day-year] end[month-day-year] output_prefix' ;
-    printf "\nYou can also designate NYSE or AMEX or NASDAQ in place of stocklist to pull all stocks from that exchange\n" ;
+    printf "\nYou can also designate NYSE or AMEX or NASDAQ in place of stocklist to pull all stocks from that market\n" ;
     exit 1
 fi
 
@@ -30,13 +30,15 @@ fi
 if [[ "$1" != "NASDAQ" && "$1" != "NYSE" && "$1" != "AMEX" ]]; then
 	x=$(cat "$1")
 fi
-	
+	((variableB*variableC))
 #parse the input dates
 m=`echo $2 | cut -d"-" -f1`
+m=$((m-1))
 d=`echo $2 | cut -d"-" -f2`
 y=`echo $2 | cut -d"-" -f3`
 
 m2=`echo $3 | cut -d"-" -f1`
+m2=$((m2-1))
 d2=`echo $3 | cut -d"-" -f2`
 y2=`echo $3 | cut -d"-" -f3`
 
