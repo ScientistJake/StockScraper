@@ -30,7 +30,7 @@ fi
 if [[ "$1" != "NASDAQ" && "$1" != "NYSE" && "$1" != "AMEX" ]]; then
 	x=$(cat "$1")
 fi
-	((variableB*variableC))
+	
 #parse the input dates
 m=`echo $2 | cut -d"-" -f1`
 m=$((m-1))
